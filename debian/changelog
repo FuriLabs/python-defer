@@ -1,0 +1,6 @@
+python-defer (1.0.2+bzr481-1) unstable; urgency=low
+
+  * initial debian upload
+
+ -- Michael Vogt <mvo@debian.org>  Mon, 31 Oct 2011 17:30:32 +0100
+
