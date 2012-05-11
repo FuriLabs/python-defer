@@ -31,7 +31,6 @@ setup(name="defer",
       packages=["defer"],
       test_suite="nose.collector",
       test_requires=["Nose"],
-      platforms = "posix",
-      use_2to3=sys.version_info[0] >= 3,
+      platforms="posix",
+      use_2to3=True,
       )
-

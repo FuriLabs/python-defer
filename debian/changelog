@@ -1,3 +1,30 @@
+python-defer (1.0.6-1) unstable; urgency=low
+
+  [ Sebastian Heinlein ]
+  * New upstream bug fix release: Use 2to3 to avoid invalid syntax
+  * debian/control: Add the comment of the GPG key to the maintainer field
+  
+  [ Michael Vogt ]
+  * debian/control:
+    - point Vcs-Bzr to 
+      http://bzr.debian.org/collab-maint/python-defer/debian-sid
+
+ -- Michael Vogt <mvo@debian.org>  Fri, 11 May 2012 16:08:55 +0200
+
+python-defer (1.0.5-1) unstable; urgency=low
+
+  * New upstream release: Important Python3 fixes
+  * debian/control: Fix VCS branch
+
+ -- Sebastian Heinlein (devel) <devel@glatzor.de>  Wed, 09 May 2012 08:35:51 -0700
+
+python-defer (1.0.2+bzr481-2) UNRELEASED; urgency=low
+
+  * debian/control:
+    - update standards version (no changes)
+
+ -- Michael Vogt <mvo@debian.org>  Mon, 31 Oct 2011 17:36:24 +0100
+
 python-defer (1.0.2+bzr481-1) unstable; urgency=low
 
   * initial debian upload

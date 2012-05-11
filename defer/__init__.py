@@ -65,12 +65,17 @@ __author__  = "Sebastian Heinlein <devel@glatzor.de>"
 __all__ = ("Deferred", "AlreadyCalledDeferred", "DeferredException",
            "defer", "inline_callbacks", "return_value")
 
-import version
-__version__ = version.VERSION
 
+import collections
 from functools import wraps
 import sys
 import warnings
+
+from . import version
+
+__version__ = version.VERSION
+
+PY3K = sys.version_info.major > 2
 
 
 class _DefGen_Return(BaseException):
@@ -121,7 +126,10 @@ class DeferredException(object):
 
     def raise_exception(self):
         """Raise the stored exception."""
-        raise self.type, self.value, self.traceback
+        if PY3K:
+            raise self.value.with_traceback(self.traceback)
+        else:
+            raise self.type, self.value, self.traceback
 
     def catch(self, *errors):
         """Check if the stored exception is a subclass of one of the
@@ -130,7 +138,7 @@ class DeferredException(object):
 
         >>> exc = DeferredException(SystemError())
         >>> exc.catch(Exception) # Will catch the exception and return it
-        <type 'exceptions.Exception'>
+        <class 'Exception'>
         >>> exc.catch(OSError)   # Won't catch and raise the stored exception
         Traceback (most recent call last):
             ...
@@ -252,8 +260,8 @@ class Deferred(object):
         >>> deferred.result
         'Got: catched'
         """
-        assert callable(callback)
-        assert errback is None or callable(errback)
+        assert isinstance(callback, collections.Callable)
+        assert errback is None or isinstance(errback, collections.Callable)
         if errback is None:
             errback = _passthrough
         self.callbacks.append(((callback,
@@ -424,7 +432,7 @@ def defer(func, *args, **kwargs):
     >>> defer(lambda: deferred) == deferred
     True
     """
-    assert callable(func)
+    assert isinstance(func, collections.Callable)
     try:
         result = func(*args, **kwargs)
     except:
@@ -470,14 +478,20 @@ def _inline_callbacks(result, gen, deferred):
             # Send the last result back as the result of the yield expression.
             is_failure = isinstance(result, DeferredException)
             if is_failure:
-                result = gen.throw(result.type, result.value, result.traceback)
+                if PY3K:
+                    excep = result.value.with_traceback(result.traceback)
+                    result = gen.throw(excep)
+                else:
+                    result = gen.throw(result.type,
+                                       result.value,
+                                       result.traceback)
             else:
                 result = gen.send(result)
         except StopIteration:
             # fell off the end, or "return" statement
             deferred.callback(None)
             return deferred
-        except _DefGen_Return, err:
+        except _DefGen_Return as err:
             # returnValue() was called; time to give a result to the original
             # Deferred.  First though, let's try to identify the potentially
             # confusing situation which results when return_value() is
