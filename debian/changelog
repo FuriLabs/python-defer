@@ -1,3 +1,13 @@
+python-defer (1.0.6-2) unstable; urgency=low
+
+  [Sebastian Heinlein]
+  * debian/control:
+    - Fix Python3 dependencies (closes: #674223)
+    - Remove use of X(S|B)-Python-Version
+    - Add Python version hint to the summary
+
+ -- Sebastian Heinlein (Devel) <devel@glatzor.de>  Mon, 11 Jun 2012 11:12:11 +0200
+
 python-defer (1.0.6-1) unstable; urgency=low
 
   [ Sebastian Heinlein ]
