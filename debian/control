@@ -3,9 +3,7 @@ Section: python
 Priority: extra
 Maintainer: Sebastian Heinlein (devel) <devel@glatzor.de>
 Uploaders: Michael Vogt <mvo@debian.org>
-Build-Depends: debhelper (>= 7.3),
-               python,
-               python-setuptools,
+Build-Depends: debhelper (>= 7.3), dh-python, python3-nose,
                python3-setuptools,
                python3-all,
 Standards-Version: 3.9.2
@@ -13,23 +11,6 @@ Homepage: https://launchpad.net/python-defer
 X-Python-Version: >= 2.7
 X-Python3-Version: >= 3.2
 Vcs-Bzr: http://bzr.debian.org/collab-maint/python-defer/debian-sid
-
-Package: python-defer
-Architecture: all
-Section: python
-Depends: ${misc:Depends},
-         ${python:Depends}
-Suggests: python-dbus
-Description: Small framework for asynchronous programming (Python 2)
- The defer module provides an easy way to write asynchrouns Python programs.
- It is greatly inspired by Twisted's defer, but hasn't got any external
- dependencies.
- .
- Furthermore it features decorators to write asynchronous D-Bus servers and
- clients.
- .
- At first defer was part of aptdaemon, but moved to a separate project in
- August of 2010.
 
 Package: python3-defer
 Architecture: all
