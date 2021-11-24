@@ -1,3 +1,11 @@
+python-defer (1.0.6-2.1ubuntu1) jammy; urgency=medium
+
+  * Run 2to3
+  * use Callable in collections.abc instead of collections (LP: #1951993)
+  * use raw docstring for docstring with backslash in it
+
+ -- Julian Andres Klode <juliank@ubuntu.com>  Wed, 24 Nov 2021 18:13:29 +0100
+
 python-defer (1.0.6-2.1) unstable; urgency=medium
 
   * Non-maintainer upload.
