@@ -3,6 +3,7 @@ Source: https://launchpad.net/python-defer
 
 Files: *
 Copyright: © 2008-2010 Sebastian Heinlein <devel@glatzor.de>
+           © 2025 Bardia Moshiri <bardia@furilabs.com>
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -51,6 +52,7 @@ Copyright: © 2008-2010 Sebastian Heinlein <devel@glatzor.de>
            © 2001-2010 Thijs Triemstra
            © 2001-2010 Thomas Herve
            © 2001-2010 Timothy Allen
+           © 2025 Bardia Moshiri <bardia@furilabs.com>
 License: MIT
  # Permission is hereby granted, free of charge, to any person obtaining
  # a copy of this software and associated documentation files (the
@@ -75,6 +77,7 @@ Files: debian/*
 Copyright: © 2008-2010 Sebastian Heinlein <devel@glatzor.de>
            © 2009 Canonical Ltd.
            © 2009 Julian Andres Klode <jak@debian.org>
+           © 2025 Bardia Moshiri <bardia@furilabs.com>
 License: GPL-2+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

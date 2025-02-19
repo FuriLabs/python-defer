@@ -1,17 +1,16 @@
 Source: python-defer
 Section: python
-Priority: extra
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Bardia Moshiri <bardia@furilabs.com>
 XSBC-Original-Maintainer: Sebastian Heinlein (devel) <devel@glatzor.de>
+                          Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Uploaders: Michael Vogt <mvo@debian.org>
-Build-Depends: debhelper (>= 7.3), dh-python, python3-nose,
+Build-Depends: debhelper-compat (= 13), dh-python, python3-nose,
                python3-setuptools,
                python3-all,
-Standards-Version: 3.9.2
-Homepage: https://launchpad.net/python-defer
-X-Python-Version: >= 2.7
-X-Python3-Version: >= 3.2
-Vcs-Bzr: http://bzr.debian.org/collab-maint/python-defer/debian-sid
+Standards-Version: 4.7.0
+Vcs-Browser: https://github.com/furilabs/python-defer
+Vcs-Git: https://github.com/furilabs/python-defer.git
+Homepage: https://github.com/furilabs/python-defer
 
 Package: python3-defer
 Architecture: all
