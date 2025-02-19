@@ -32,5 +32,4 @@ setup(name="defer",
       test_suite="nose.collector",
       test_requires=["Nose"],
       platforms="posix",
-      use_2to3=True,
       )

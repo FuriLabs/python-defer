@@ -66,7 +66,7 @@ __all__ = ("Deferred", "AlreadyCalledDeferred", "DeferredException",
            "defer", "inline_callbacks", "return_value")
 
 
-import collections
+import collections.abc
 from functools import wraps
 import sys
 import warnings
@@ -129,7 +129,7 @@ class DeferredException(object):
         if PY3K:
             raise self.value.with_traceback(self.traceback)
         else:
-            raise self.type, self.value, self.traceback
+            raise self.type(self.value).with_traceback(self.traceback)
 
     def catch(self, *errors):
         """Check if the stored exception is a subclass of one of the
@@ -176,7 +176,7 @@ class DeferredException(object):
 
 
 class Deferred(object):
-    """The Deferred allows to chain callbacks.
+    r"""The Deferred allows to chain callbacks.
 
     There are two type of callbacks: normal callbacks and errbacks, which
     handle an exception in a normal callback.
@@ -260,8 +260,8 @@ class Deferred(object):
         >>> deferred.result
         'Got: catched'
         """
-        assert isinstance(callback, collections.Callable)
-        assert errback is None or isinstance(errback, collections.Callable)
+        assert isinstance(callback, collections.abc.Callable)
+        assert errback is None or isinstance(errback, collections.abc.Callable)
         if errback is None:
             errback = _passthrough
         self.callbacks.append(((callback,
@@ -432,7 +432,7 @@ def defer(func, *args, **kwargs):
     >>> defer(lambda: deferred) == deferred
     True
     """
-    assert isinstance(func, collections.Callable)
+    assert isinstance(func, collections.abc.Callable)
     try:
         result = func(*args, **kwargs)
     except:
@@ -482,9 +482,7 @@ def _inline_callbacks(result, gen, deferred):
                     excep = result.value.with_traceback(result.traceback)
                     result = gen.throw(excep)
                 else:
-                    result = gen.throw(result.type,
-                                       result.value,
-                                       result.traceback)
+                    result = gen.throw(result.type(result.value).with_traceback(result.traceback))
             else:
                 result = gen.send(result)
         except StopIteration:
