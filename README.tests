@@ -1,3 +1,0 @@
-Tests are supported via nosetests from the python-nose package.
-
-Run them via nosetests.

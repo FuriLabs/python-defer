@@ -4,7 +4,6 @@ MANIFEST.in
 NEWS
 NEWS.aptdaemon
 README
-README.tests
 pylintrc
 setup.cfg
 setup.py
