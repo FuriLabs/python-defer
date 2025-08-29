@@ -5,8 +5,8 @@ from setuptools import setup
 import sys
 
 def read_version():
-    f= os.path.join(os.path.dirname(__file__), "defer", "version.py")
-    s=open(f).read()
+    f = os.path.join(os.path.dirname(__file__), "defer", "version.py")
+    s = open(f).read()
     ver = re.match("VERSION=\"(.*)\"", s).group(1)
     return ver
 
@@ -19,7 +19,7 @@ setup(name="defer",
       long_description=readme,
       author="Sebastian Heinlein",
       author_email="devel@glatzor.de",
-      license = "GNU GPL",
+      license="GNU GPL",
       url="http://launchpad.net/python-defer",
       keywords="async defer dbus asynchronous",
       classifiers=["Development Status :: 5 - Production/Stable",
@@ -29,7 +29,5 @@ setup(name="defer",
                    "Topic :: Software Development :: Libraries :: " \
                            "Python Modules"],
       packages=["defer"],
-      test_suite="nose.collector",
-      test_requires=["Nose"],
       platforms="posix",
       )
